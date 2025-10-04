@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
 <head>
   <title>Aston Martin Dex</title>
@@ -395,42 +395,6 @@
     </div>
   </div>
 </footer>
-
-
-  <script>
-    // Smooth in‑page links
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id = a.getAttribute('href');
-        if(id.length>1){
-          const el = document.querySelector(id);
-          if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
-        }
-      });
-    });
-
-    // Pricing toggle (Monthly / Yearly with 20% off applied to yearly)
-    const switchEl = document.getElementById('billingSwitch');
-    const prices = {
-      monthly: { basic: 14.99, pro: 29.99 },
-      yearly:  { basic: 14.99*12*0.8, pro: 29.99*12*0.8 } // 20% savings
-    };
-    const fmt = v => '$' + v.toFixed(2).replace(/\.00$/,'');
-    const updatePrices = yearly => {
-      const tier = yearly ? 'yearly' : 'monthly';
-      document.getElementById('p-basic').textContent = fmt(prices[tier].basic) + (yearly ? '' : '');
-      document.getElementById('p-pro').textContent   = fmt(prices[tier].pro) + (yearly ? '' : '');
-      document.getElementById('saveBadge').style.opacity = yearly ? 1 : .6;
-    };
-    const toggle = () => {
-      switchEl.classList.toggle('active');
-      const yearly = switchEl.classList.contains('active');
-      switchEl.setAttribute('aria-checked', yearly ? 'true' : 'false');
-      updatePrices(yearly);
-    };
-    switchEl.addEventListener('click', toggle);
-    switchEl.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); toggle(); }});
-    updatePrices(false);
-  </script>
 </body>
 </html>
+
